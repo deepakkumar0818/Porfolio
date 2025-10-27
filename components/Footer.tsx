@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import Link from 'next/link'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -13,10 +14,12 @@ const Footer = () => {
   ]
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Services', href: '/services' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (
@@ -65,13 +68,14 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <motion.a
-                    href={link.href}
-                    whileHover={{ x: 5 }}
-                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200 block"
-                  >
-                    {link.name}
-                  </motion.a>
+                  <Link href={link.href}>
+                    <motion.span
+                      whileHover={{ x: 5 }}
+                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200 block cursor-pointer"
+                    >
+                      {link.name}
+                    </motion.span>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { ArrowDown, Download, Github, Linkedin, Mail, ChevronRight, Sparkles, Zap } from 'lucide-react'
+import { ChevronRight, Github, Sparkles, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const Hero = () => {
@@ -47,12 +47,6 @@ const Hero = () => {
       clearInterval(timer)
     }
   }, [])
-
-  const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/deepakkumar0818', icon: Github, color: 'hover:text-gray-300', delay: 0.1 },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/itsdeepakk/', icon: Linkedin, color: 'hover:text-blue-400', delay: 0.2 },
-    { name: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=deepakkumr0818@gmail.com&su=New%20Project%20Inquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20potential%20project.%20Here%20are%20the%20details%3A%0A%0A-%20Budget%3A%0A-%20Timeline%3A%0A-%20Scope%3A%0A%0AThanks%2C%0A', icon: Mail, color: 'hover:text-red-400', delay: 0.3 },
-  ]
 
   const skills = ['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker']
 
@@ -264,18 +258,17 @@ const Hero = () => {
             >
             <motion.a
               href="/projects"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center space-x-2"
             >
               <span>Explore My Work</span>
               <motion.div
-                className="flex items-center space-x-1"
                 whileHover={{ x: 5 }}
+                className="flex items-center space-x-1"
               >
                 <ChevronRight className="h-5 w-5" />
               </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
             
             <motion.a
@@ -294,30 +287,6 @@ const Hero = () => {
                 <Zap className="h-5 w-5" />
               </motion.div>
             </motion.a>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              variants={itemVariants}
-              className="flex space-x-4 pt-6"
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`p-3 rounded-xl bg-white/5 border border-white/10 ${social.color} transition-all duration-300 backdrop-blur-sm hover:border-cyan-400/50`}
-                  aria-label={social.name}
-                >
-                  <social.icon className="h-6 w-6" />
-                </motion.a>
-              ))}
             </motion.div>
           </div>
 
@@ -429,26 +398,6 @@ const Hero = () => {
                 transition={{ duration: 7, repeat: Infinity, delay: 1 }}
               />
             </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Premium Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-xs text-gray-400 font-medium tracking-wider">SCROLL</span>
-          <motion.div
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-            animate={{ borderColor: ['rgba(255,255,255,0.3)', 'rgba(34,211,238,0.8)', 'rgba(255,255,255,0.3)'] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <motion.div
-              className="w-1 h-3 bg-white/50 rounded-full mt-2"
-              animate={{ y: [0, 12, 0], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
           </motion.div>
         </motion.div>
       </div>
