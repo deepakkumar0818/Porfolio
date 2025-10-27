@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +29,16 @@ const Navbar = () => {
     { name: 'Contact', href: '/contact' },
   ]
 
+  const isActive = (href: string) => {
+    if (!pathname) return false
+    if (href === '/') return pathname === '/'
+    return pathname.startsWith(href)
+  }
+
   const socialLinks = [
-    { name: 'GitHub', href: '#', icon: Github },
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Email', href: 'mailto:your.email@example.com', icon: Mail },
+    { name: 'GitHub', href: 'https://github.com/deepakkumar0818', icon: Github },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/itsdeepakk/', icon: Linkedin },
+    { name: 'Email', href: 'mailto:deepakkumr0818@gmail.com?subject=New%20Project%20Inquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20potential%20project.%20Here%20are%20the%20details%3A%0A%0A-%20Budget%3A%0A-%20Timeline%3A%0A-%20Scope%3A%0A%0AThanks%2C%0A', icon: Mail },
   ]
 
   return (
@@ -52,7 +60,7 @@ const Navbar = () => {
             className="flex-shrink-0"
           >
             <a
-              href="#home"
+              href="/"
               className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent hover:from-cyan-400 hover:to-blue-500 transition-all duration-300"
             >
               <span className="text-shadow-glow">Portfolio</span>
@@ -68,12 +76,16 @@ const Navbar = () => {
                   href={item.href}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-white/80 hover:text-cyan-400 px-4 py-2 text-sm font-medium transition-all duration-300 relative group backdrop-blur-sm rounded-lg hover:bg-white/5"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 relative group backdrop-blur-sm rounded-lg hover:bg-white/5 ${
+                    isActive(item.href) ? 'text-cyan-400 bg-white/5' : 'text-white/80 hover:text-cyan-400'
+                  }`}
                 >
                   {item.name}
                   <motion.span 
                     className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"
                     initial={{ width: 0 }}
+                    animate={{ width: isActive(item.href) ? '100%' : 0 }}
                     whileHover={{ width: '100%' }}
                     transition={{ duration: 0.3 }}
                   />
@@ -92,6 +104,8 @@ const Navbar = () => {
               <motion.a
                 key={social.name}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-white hover:text-primary-400 transition-colors p-2"
@@ -135,7 +149,10 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:text-primary-400 block px-3 py-2 text-base font-medium transition-colors rounded-lg hover:bg-white/5"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`block px-3 py-2 text-base font-medium transition-colors rounded-lg hover:bg-white/5 ${
+                    isActive(item.href) ? 'text-cyan-400 bg-white/5' : 'text-white hover:text-primary-400'
+                  }`}
                 >
                   {item.name}
                 </motion.a>
@@ -147,6 +164,8 @@ const Navbar = () => {
                   <motion.a
                     key={social.name}
                     href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     className="text-white hover:text-primary-400 p-2"

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Palette, Smartphone, Cloud, Brain, Shield } from 'lucide-react'
+import { Code, Palette, Smartphone, Cloud, Brain, Shield, Plug } from 'lucide-react'
 import Link from 'next/link'
 
 const ServicesPreview = () => {
@@ -41,10 +41,10 @@ const ServicesPreview = () => {
       color: 'from-orange-500 to-red-600',
     },
     {
-      icon: Brain,
-      title: 'AI Integration',
-      description: 'Intelligent features and machine learning capabilities.',
-      features: ['OpenAI API', 'Custom Models', 'Data Analytics', 'Automation'],
+      icon: Plug,
+      title: 'Zoho Integration',
+      description: 'Automate and unify your workflows across the Zoho suite.',
+      features: ['Zoho CRM', 'Zoho Books', 'Zoho Desk', 'Zoho Flow Automation'],
       color: 'from-indigo-500 to-purple-600',
     },
     {
@@ -145,8 +145,10 @@ const ServicesPreview = () => {
 
           {/* CTA */}
           <motion.div variants={itemVariants} className="text-center">
-            <Link
+            <motion.a
               href="/services"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300"
             >
               <span>View All Services</span>
@@ -158,7 +160,7 @@ const ServicesPreview = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </motion.div>
-            </Link>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

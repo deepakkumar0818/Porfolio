@@ -3,9 +3,9 @@
 import Link from 'next/link'
 
 const related = [
-  { title: 'Social Media Dashboard', slug: 'social-media-dashboard' },
-  { title: 'AI Content Generator', slug: 'ai-content-generator' },
-  { title: 'E-Commerce Platform', slug: 'ecommerce-platform' },
+  { title: 'ERP Manufacturing System', slug: 'erp-manufacturing' },
+  { title: 'Doctor Appointment System', slug: 'doctor-appointment-system' },
+  { title: 'Project Management Tool', slug: 'project-management-tool' },
 ]
 
 export default function RelatedProjects() {

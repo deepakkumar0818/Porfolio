@@ -11,8 +11,7 @@ const Hero = () => {
   const [particles, setParticles] = useState<Array<{ left: number; top: number; delay: number; duration: number }>>([])
 
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 300], [0, -50])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
+  const y = useTransform(scrollY, [0, 300], [0, -15])
   const springY = useSpring(y, { stiffness: 100, damping: 30 })
 
   useEffect(() => {
@@ -50,9 +49,9 @@ const Hero = () => {
   }, [])
 
   const socialLinks = [
-    { name: 'GitHub', href: '#', icon: Github, color: 'hover:text-gray-300', delay: 0.1 },
-    { name: 'LinkedIn', href: '#', icon: Linkedin, color: 'hover:text-blue-400', delay: 0.2 },
-    { name: 'Email', href: 'mailto:your.email@example.com', icon: Mail, color: 'hover:text-red-400', delay: 0.3 },
+    { name: 'GitHub', href: 'https://github.com/deepakkumar0818', icon: Github, color: 'hover:text-gray-300', delay: 0.1 },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/itsdeepakk/', icon: Linkedin, color: 'hover:text-blue-400', delay: 0.2 },
+    { name: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=deepakkumr0818@gmail.com&su=New%20Project%20Inquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20potential%20project.%20Here%20are%20the%20details%3A%0A%0A-%20Budget%3A%0A-%20Timeline%3A%0A-%20Scope%3A%0A%0AThanks%2C%0A', icon: Mail, color: 'hover:text-red-400', delay: 0.3 },
   ]
 
   const skills = ['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker']
@@ -85,7 +84,7 @@ const Hero = () => {
     <motion.section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 sm:pt-28"
-      style={{ y: springY, opacity }}
+      style={{ y: springY }}
     >
       {/* Premium Animated Background */}
       <div className="absolute inset-0 z-0">
@@ -100,7 +99,7 @@ const Hero = () => {
             ],
           }}
           transition={{
-            duration: 8,
+            duration: 20,
             repeat: Infinity,
             ease: 'linear',
           }}
@@ -110,12 +109,12 @@ const Hero = () => {
         <motion.div
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
           animate={{
-            x: [0, 150, 0],
-            y: [0, -150, 0],
-            scale: [1, 1.1, 1],
+            x: [0, 60, 0],
+            y: [0, -60, 0],
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 30,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -123,12 +122,12 @@ const Hero = () => {
         <motion.div
           className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-pink-500/20 via-red-500/20 to-orange-500/20 rounded-full blur-3xl"
           animate={{
-            x: [0, -150, 0],
-            y: [0, 150, 0],
-            scale: [1, 1.2, 1],
+            x: [0, -60, 0],
+            y: [0, 60, 0],
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 25,
+            duration: 35,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -136,7 +135,7 @@ const Hero = () => {
         
         {/* Advanced Mouse Follower */}
         <motion.div
-          className="absolute w-40 h-40 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-500/20 rounded-full blur-2xl pointer-events-none"
+          className="absolute hidden md:block w-28 h-28 bg-gradient-to-r from-cyan-400/10 via-blue-500/10 to-purple-500/10 rounded-full blur-2xl pointer-events-none"
           animate={{
             x: mousePosition.x - 80,
             y: mousePosition.y - 80,
@@ -158,9 +157,9 @@ const Hero = () => {
               top: `${particle.top}%`,
             }}
             animate={{
-              y: [0, -30, 0],
+              y: [0, -15, 0],
               opacity: [0.3, 1, 0.3],
-              scale: [0.5, 1.5, 0.5],
+              scale: [0.8, 1.2, 0.8],
             }}
             transition={{
               duration: particle.duration,
@@ -280,7 +279,9 @@ const Hero = () => {
             </motion.a>
             
             <motion.a
-              href="/contact"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=deepakkumr0818@gmail.com&su=New%20Project%20Inquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20potential%20project.%20Here%20are%20the%20details%3A%0A%0A-%20Budget%3A%0A-%20Timeline%3A%0A-%20Scope%3A%0A%0AThanks%2C%0A"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="group relative border-2 border-white/20 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:border-cyan-400/50 hover:bg-white/5 transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm"
@@ -304,6 +305,8 @@ const Hero = () => {
                 <motion.a
                   key={social.name}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
@@ -376,7 +379,7 @@ const Hero = () => {
                         <div className="text-xs font-semibold tracking-wide text-white/90 uppercase">Featured Project</div>
                         <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-300">Live</span>
                       </div>
-                      <div className="text-sm sm:text-base font-semibold text-white">Social Media Dashboard</div>
+                      <div className="text-sm sm:text-base font-semibold text-white">ERP Manufacturing</div>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {['Next.js', 'TypeScript', 'Chart.js'].map((chip) => (
                           <span key={chip} className="px-2 py-0.5 text-[11px] rounded-full bg-white/5 border border-white/10 text-gray-300">{chip}</span>
@@ -397,9 +400,9 @@ const Hero = () => {
                         </div>
                       </div>
                       <div className="mt-3 flex items-center gap-2">
-                        <a href="/projects/social-media-dashboard" className="px-3 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-medium">Case Study</a>
+                        <a href="/projects/erp-manufacturing" className="px-3 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-medium">Case Study</a>
                         <a href="#" className="px-3 py-2 rounded-lg border border-white/15 text-white text-xs font-medium hover:border-cyan-400/50">Live Demo</a>
-                        <a href="#" aria-label="GitHub" className="ml-auto p-2 rounded-lg bg-white/5 border border-white/10 text-white hover:border-white/20">
+                        <a href="https://github.com/deepakkumar0818" aria-label="GitHub" className="ml-auto p-2 rounded-lg bg-white/5 border border-white/10 text-white hover:border-white/20">
                           <Github className="h-4 w-4" />
                         </a>
                       </div>
@@ -417,13 +420,13 @@ const Hero = () => {
               {/* Floating Elements */}
               <motion.div
                 className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl shadow-lg"
-                animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
+                animate={{ rotate: [0, 6, -6, 0], y: [0, -6, 0] }}
+                transition={{ duration: 6, repeat: Infinity }}
               />
               <motion.div
                 className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl shadow-lg"
-                animate={{ rotate: [0, -15, 15, 0], y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                animate={{ rotate: [0, -8, 8, 0], y: [0, 6, 0] }}
+                transition={{ duration: 7, repeat: Infinity, delay: 1 }}
               />
             </div>
           </motion.div>
