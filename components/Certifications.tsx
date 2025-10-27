@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Award, CheckCircle, ExternalLink, Calendar } from 'lucide-react'
+import { Award, CheckCircle, Calendar } from 'lucide-react'
 
 const Certifications = () => {
   const [ref, inView] = useInView({
@@ -172,18 +172,11 @@ const Certifications = () => {
                     </div>
 
                     {/* Footer */}
-                    <div className="pt-4 border-t border-white/10 space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <div className="flex items-center space-x-2 text-gray-400">
-                          <Calendar className="h-4 w-4" />
-                          <span>{cert.date}</span>
-                        </div>
-                        <button className="flex items-center space-x-1 text-cyan-400 hover:text-cyan-300 transition-colors">
-                          <span className="text-xs font-medium">View</span>
-                          <ExternalLink className="h-3 w-3" />
-                        </button>
+                    <div className="pt-4 border-t border-white/10">
+                      <div className="flex items-center space-x-2 text-gray-400 text-sm">
+                        <Calendar className="h-4 w-4" />
+                        <span>{cert.date}</span>
                       </div>
-                      <p className="text-xs text-gray-500">ID: {cert.credentialId}</p>
                     </div>
                   </div>
                 </motion.div>

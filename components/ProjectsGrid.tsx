@@ -182,13 +182,16 @@ const ProjectsGrid = () => {
                 variants={itemVariants}
                 className="group relative"
               >
-                <Link href={`/projects/${project.slug}`}>
-                  <motion.div
-                    className="h-full p-5 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl hover:border-white/20 transition-all duration-300 cursor-pointer"
-                    whileHover={{ scale: 1.02, y: -8 }}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                <motion.div
+                  className="h-full p-5 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl hover:border-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.02, y: -8 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Link 
+                    href={`/projects/${project.slug}`}
+                    className="block cursor-pointer"
                   >
                     <div className="space-y-4">
                       {/* Project Icon/Image */}
@@ -228,29 +231,29 @@ const ProjectsGrid = () => {
                           </span>
                         ))}
                       </div>
-
-                      {/* Links */}
-                      <div className="flex items-center space-x-4 pt-4 border-t border-white/10">
-                        <a
-                          href={project.github}
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors"
-                        >
-                          <Github className="h-5 w-5" />
-                          <span className="text-sm font-medium">Code</span>
-                        </a>
-                        <a
-                          href={project.demo}
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                          <span className="text-sm font-medium">Demo</span>
-                        </a>
-                      </div>
                     </div>
-                  </motion.div>
-                </Link>
+                  </Link>
+
+                  {/* Links - Outside of the Link component */}
+                  <div className="flex items-center space-x-4 pt-4 border-t border-white/10">
+                    <a
+                      href={project.github}
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors"
+                    >
+                      <Github className="h-5 w-5" />
+                      <span className="text-sm font-medium">Code</span>
+                    </a>
+                    <a
+                      href={project.demo}
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors"
+                    >
+                      <ExternalLink className="h-5 w-5" />
+                      <span className="text-sm font-medium">Demo</span>
+                    </a>
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

@@ -2,9 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 import { User, MapPin, Calendar, Award } from 'lucide-react'
+import Image from 'next/image'
 
 const AboutHero = () => {
+  const [imageError, setImageError] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -68,7 +71,7 @@ const AboutHero = () => {
             {/* Description */}
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Passionate about creating exceptional digital experiences that solve real-world problems. 
-              With over 6 years of experience in full-stack development, I specialize in building 
+              With over 4 years of experience in full-stack development, I specialize in building 
               scalable applications that drive business growth and user engagement.
             </p>
           </motion.div>
@@ -79,13 +82,13 @@ const AboutHero = () => {
               {
                 icon: MapPin,
                 label: 'Location',
-                value: 'Your City, Country',
+                value: 'Mohali, Punjab',
                 color: 'from-cyan-500 to-blue-600',
               },
               {
                 icon: Calendar,
                 label: 'Experience',
-                value: '6+ Years',
+                value: '4 Years',
                 color: 'from-purple-500 to-pink-600',
               },
               {
@@ -110,11 +113,25 @@ const AboutHero = () => {
             ))}
           </motion.div>
 
-          {/* Profile Image Placeholder */}
+          {/* Profile Image / Bitmoji */}
           <motion.div variants={itemVariants} className="flex justify-center">
             <div className="relative">
-              <div className="w-48 h-48 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center shadow-2xl">
-                <User className="h-24 w-24 text-white" />
+              <div className="w-48 h-48 rounded-full overflow-hidden shadow-2xl bg-gradient-to-r from-cyan-500 to-blue-600">
+                {imageError ? (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <User className="h-24 w-24 text-white" />
+                  </div>
+                ) : (
+                  <Image
+                    src="/bitmoji-male.png"
+                    alt="Deepak Bitmoji"
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover"
+                    onError={() => setImageError(true)}
+                    priority
+                  />
+                )}
               </div>
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-full blur-xl" />
             </div>

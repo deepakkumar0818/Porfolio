@@ -157,7 +157,7 @@ const About = () => {
                     <span>Professional Journey</span>
                   </h3>
                   <p className="text-gray-300 leading-relaxed text-lg">
-                    With over <span className="text-cyan-400 font-semibold">6 years of experience</span> in full-stack development, 
+                    With over <span className="text-cyan-400 font-semibold">4 years of experience</span> in full-stack development, 
                     I specialize in architecting scalable solutions that deliver exceptional user experiences. 
                     My expertise spans from frontend frameworks to cloud infrastructure.
                   </p>
@@ -185,9 +185,9 @@ const About = () => {
                 variants={itemVariants}
                 className="grid grid-cols-2 gap-6"
               >
-                {[
+                {[ 
                   { number: '100+', label: 'Projects Delivered', icon: Award, color: 'text-cyan-400' },
-                  { number: '6+', label: 'Years Experience', icon: Clock, color: 'text-blue-400' },
+                  { number: '4', label: 'Years Experience', icon: Clock, color: 'text-blue-400' },
                   { number: '50+', label: 'Happy Clients', icon: Users, color: 'text-emerald-400' },
                   { number: '99%', label: 'Success Rate', icon: Target, color: 'text-purple-400' },
                 ].map((stat, index) => (

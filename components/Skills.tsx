@@ -186,7 +186,7 @@ const Skills = () => {
           <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { number: '25+', label: 'Technologies Mastered' },
-              { number: '6+', label: 'Years of Experience' },
+              { number: '4', label: 'Years of Experience' },
               { number: '95%', label: 'Average Proficiency' },
               { number: '100+', label: 'Projects Completed' },
             ].map((stat, index) => (

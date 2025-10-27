@@ -112,14 +112,6 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © {currentYear} Deepak Kumar. All rights reserved.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-1 text-gray-400 text-sm"
-            >
-              <span>Made with</span>
-              <Heart className="h-4 w-4 text-red-500 fill-current" />
-              <span>using Next.js & TypeScript</span>
-            </motion.div>
           </div>
         </motion.div>
       </div>

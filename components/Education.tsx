@@ -12,30 +12,27 @@ const Education = () => {
 
   const education = [
     {
-      degree: 'Master of Science in Computer Science',
-      institution: 'Stanford University',
-      location: 'Stanford, CA',
-      period: '2015 - 2017',
-      description: 'Specialized in Software Engineering and Artificial Intelligence. Focused on distributed systems, machine learning, and advanced algorithms.',
+      degree: 'Bachelor of Technology in Electronics and Communication Engineering (CGPA: 7.89/10)',
+      institution: 'I.K. Gujral Punjab Technical University, Jalandhar',
+      location: 'Jalandhar, Punjab',
+      period: '2020 – 2024',
+      description:
+        'Focused on core electronics, communication systems, and software foundations with projects bridging hardware and full‑stack development.',
       achievements: [
-        'GPA: 3.9/4.0',
-        'Dean\'s List for Academic Excellence',
-        'Published 2 research papers in AI conferences',
-        'Teaching Assistant for Data Structures course',
+        'Completed industry projects integrating MERN stack with IoT concepts',
+        'Active participation in coding clubs and tech fests',
       ],
       color: 'from-cyan-500 to-blue-600',
     },
     {
-      degree: 'Bachelor of Science in Computer Science',
-      institution: 'University of California, Berkeley',
-      location: 'Berkeley, CA',
-      period: '2011 - 2015',
-      description: 'Comprehensive foundation in computer science principles, including programming, algorithms, databases, and software engineering.',
+      degree: "Senior Secondary (Science) — 12th (81.2%)",
+      institution: "St Paul’s Sr. Sec. School, Palampur",
+      location: 'Palampur, Himachal Pradesh',
+      period: '2020',
+      description:
+        'Science stream with emphasis on Physics, Chemistry, Mathematics, and Computer Science.',
       achievements: [
-        'GPA: 3.8/4.0',
-        'Graduated Magna Cum Laude',
-        'President of Computer Science Club',
-        'Winner of Annual Hackathon Competition 2014',
+        'School tech society volunteer and project exhibitions',
       ],
       color: 'from-purple-500 to-violet-600',
     },
