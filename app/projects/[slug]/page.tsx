@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import ProjectDetail from '@/components/ProjectDetail'
 import RelatedProjects from '@/components/RelatedProjects'
 import ProjectNavigation from '@/components/ProjectNavigation'
+import { getProjectBySlug } from '@/lib/projectsData'
 
 interface ProjectPageProps {
   params: {
@@ -10,14 +11,13 @@ interface ProjectPageProps {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  // In a real app, you'd fetch the project data here
-  const project = {
-    title: 'Sample Project Title',
-    description: 'This is a sample project description',
-    category: 'Web Development',
-    technologies: ['React', 'TypeScript', 'Next.js']
+  const project = getProjectBySlug(params.slug)
+  if (!project) {
+    return {
+      title: 'Project Not Found - Deepak Kumar',
+      description: 'The requested project could not be found.',
+    }
   }
-
   return {
     title: `${project.title} - Deepak Kumar`,
     description: project.description,
@@ -29,8 +29,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   return (
     <>
       <ProjectDetail slug={params.slug} />
-      <ProjectNavigation />
-      <RelatedProjects />
+      <ProjectNavigation currentSlug={params.slug} />
+      <RelatedProjects currentSlug={params.slug} />
     </>
   )
 }

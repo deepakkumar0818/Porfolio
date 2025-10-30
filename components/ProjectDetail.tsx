@@ -1,24 +1,24 @@
 'use client'
 
 import Link from 'next/link'
+import { getProjectBySlug } from '@/lib/projectsData'
 
 type ProjectDetailProps = {
   slug: string
 }
 
 export default function ProjectDetail({ slug }: ProjectDetailProps) {
-  // Placeholder data; in a real app, fetch by slug
-  const project = {
-    title: 'Sample Project Title',
-    description:
-      'A comprehensive overview of the project, goals, challenges, and outcomes with an emphasis on performance and UX.',
-    category: 'Web Development',
-    date: '2024',
-    technologies: ['React', 'TypeScript', 'Next.js', 'TailwindCSS'],
-    links: {
-      demo: '#',
-      github: '#',
-    },
+  const project = getProjectBySlug(slug)
+  if (!project) {
+    return (
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center text-white">
+          <h1 className="text-3xl font-bold mb-2">Project not found</h1>
+          <p className="text-gray-300 mb-6">We couldn't find details for this project.</p>
+          <Link href="/projects" className="text-cyan-400 hover:text-cyan-300">Back to Projects</Link>
+        </div>
+      </section>
+    )
   }
 
   return (

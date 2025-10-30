@@ -27,18 +27,25 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      const data = await res.json()
       setSubmitStatus('success')
+      if (data?.previewUrl) {
+        console.info('Email preview URL:', data.previewUrl)
+      }
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 3000)
-    }, 2000)
+    } catch (err) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus('idle'), 3000)
+    }
   }
 
   return (

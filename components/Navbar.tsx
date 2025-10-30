@@ -63,7 +63,7 @@ const Navbar = () => {
               href="/"
               className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent hover:from-cyan-400 hover:to-blue-500 transition-all duration-300"
             >
-              <span className="text-shadow-glow">Portfolio</span>
+              <span className="text-shadow-glow italic font-[cursive]">Deepak Kumar</span>
             </a>
           </motion.div>
 

@@ -1,14 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import { getRelatedProjects } from '@/lib/projectsData'
 
-const related = [
-  { title: 'ERP Manufacturing System', slug: 'erp-manufacturing' },
-  { title: 'Doctor Appointment System', slug: 'doctor-appointment-system' },
-  { title: 'Project Management Tool', slug: 'project-management-tool' },
-]
+type Props = { currentSlug: string }
 
-export default function RelatedProjects() {
+export default function RelatedProjects({ currentSlug }: Props) {
+  const related = getRelatedProjects(currentSlug, 3)
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-7xl mx-auto">
