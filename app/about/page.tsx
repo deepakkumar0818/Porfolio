@@ -3,7 +3,7 @@ import AboutContent from '@/components/AboutContent'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 import Education from '@/components/Education'
-import Certifications from '@/components/Certifications'
+import Interests from '@/components/Interests'
 
 export const metadata = {
   title: 'About Me - Deepak Kumar | Full Stack Developer',
@@ -18,7 +18,7 @@ export default function About() {
       <Skills />
       <Experience />
       <Education />
-      <Certifications />
+      <Interests />
     </>
   )
 }

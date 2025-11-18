@@ -1,7 +1,6 @@
 import ServicesHero from '@/components/ServicesHero'
 import ServicesList from '@/components/ServicesList'
 import Process from '@/components/Process'
-import Pricing from '@/components/Pricing'
 import FAQ from '@/components/FAQ'
 
 export const metadata = {
@@ -15,7 +14,6 @@ export default function Services() {
       <ServicesHero />
       <ServicesList />
       <Process />
-      <Pricing />
       <FAQ />
     </>
   )

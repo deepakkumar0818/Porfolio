@@ -2,12 +2,19 @@ import { Metadata } from 'next'
 import ProjectDetail from '@/components/ProjectDetail'
 import RelatedProjects from '@/components/RelatedProjects'
 import ProjectNavigation from '@/components/ProjectNavigation'
-import { getProjectBySlug } from '@/lib/projectsData'
+import { getProjectBySlug, getAllProjects } from '@/lib/projectsData'
 
 interface ProjectPageProps {
   params: {
     slug: string
   }
+}
+
+export function generateStaticParams() {
+  const projects = getAllProjects()
+  return projects.map((project) => ({
+    slug: project.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {

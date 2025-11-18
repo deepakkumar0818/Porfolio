@@ -34,7 +34,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold text-white">Portfolio</h3>
+            <h3 className="text-2xl font-bold text-white italic font-[cursive]">Deepak Kumar</h3>
             <p className="text-gray-300 leading-relaxed">
               Creating beautiful, functional, and user-centered digital experiences that make a difference.
             </p>

@@ -2,11 +2,19 @@ import { Metadata } from 'next'
 import BlogPost from '@/components/BlogPost'
 import RelatedPosts from '@/components/RelatedPosts'
 import BlogNavigation from '@/components/BlogNavigation'
+import { getAllBlogPosts } from '@/lib/blogData'
 
 interface BlogPostPageProps {
   params: {
     slug: string
   }
+}
+
+export function generateStaticParams() {
+  const posts = getAllBlogPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
