@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github, Calendar, Tag } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { getAllProjects } from '@/lib/projectsData'
 
 const ProjectsGrid = () => {
   const [ref, inView] = useInView({
@@ -11,190 +13,51 @@ const ProjectsGrid = () => {
     threshold: 0.1,
   })
 
-  const projects = [
-    {
-      id: 1,
-      title: 'ERP Manufacturing System',
-      slug: 'erp-manufacturing-system',
-      description: 'Enterprise ERP for manufacturing: production planning, procurement, inventory, BOM, finance, QA, and shop-floor tracking with real-time dashboards.',
-      image: '🏭',
-      category: 'ERP',
-      technologies: ['Next.js', 'TypeScript', 'Node.js', 'Prisma', 'PostgreSQL'],
-      date: '2025',
-      github: '#',
-      demo: '#',
-      color: 'from-emerald-500 to-green-600',
-    },
-    {
-      id: 2,
-      title: 'Doc Spot (Doctor Appointment System)',
-      slug: 'doc-spot-doctor-appointment-system',
-      description: 'Multi-clinic booking with doctor schedules, tele-consultation, e-prescriptions, reminders, and payments.',
-      image: '🩺',
-      category: 'Healthcare',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Twilio'],
-      date: '2025',
-      github: '#',
-      demo: '#',
-      color: 'from-cyan-500 to-blue-600',
-    },
-    {
-      id: 3,
-      title: 'Food Delivery Application',
-      slug: 'food-delivery-application',
-      description: 'End-to-end food ordering with restaurant panel, delivery partner app, live tracking, and payments.',
-      image: '🍔',
-      category: 'Mobile',
-      technologies: ['React Native', 'Node.js', 'MongoDB', 'Maps API'],
-      date: '2024',
-      github: '#',
-      demo: '#',
-      color: 'from-orange-500 to-red-600',
-    },
-    {
-      id: 4,
-      title: 'Student Portal',
-      slug: 'student-portal',
-      description: 'Student self-service portal for courses, attendance, results, fees, assignments, and notifications.',
-      image: '🎓',
-      category: 'Web App',
-      technologies: ['Next.js', 'NestJS', 'PostgreSQL', 'Redis'],
-      date: '2024',
-      github: '#',
-      demo: '#',
-      color: 'from-blue-400 to-cyan-500',
-    },
-    {
-      id: 5,
-      title: 'Real Estate Management System',
-      slug: 'real-estate-management-system',
-      description: 'Property listing and sales CRM with leads, site visits, inventory, and commission workflows.',
-      image: '🏘️',
-      category: 'Real Estate',
-      technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Mapbox'],
-      date: '2024',
-      github: '#',
-      demo: '#',
-      color: 'from-pink-500 to-rose-600',
-    },
-    {
-      id: 6,
-      title: 'Real Estate Rental Management',
-      slug: 'real-estate-rental-management',
-      description: 'Rentals platform for listings, tenant onboarding, leases, rent collection, and maintenance.',
-      image: '🏠',
-      category: 'Real Estate',
-      technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
-      date: '2024',
-      github: '#',
-      demo: '#',
-      color: 'from-purple-500 to-violet-600',
-    },
-    {
-      id: 7,
-      title: 'Farmer Procurement Application',
-      slug: 'farmer-procurement-application',
-      description: 'Farm procurement with supplier onboarding, purchase cycles, quality checks, and logistics.',
-      image: '🌾',
-      category: 'Supply Chain',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-lime-500 to-green-600',
-    },
-    {
-      id: 8,
-      title: 'Outlet Management System',
-      slug: 'outlet-management-system',
-      description: 'Retail outlet operations: store onboarding, planograms, stock audits, promotions, and reporting.',
-      image: '🏪',
-      category: 'Retail',
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Redis'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-teal-500 to-cyan-600',
-    },
-    {
-      id: 9,
-      title: 'Inventory & Warehousing System',
-      slug: 'inventory-and-warehousing-system',
-      description: 'Inventory control, warehouse locations, pick-pack-ship, GRN, and barcode-based operations.',
-      image: '📦',
-      category: 'ERP',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'RabbitMQ'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-amber-500 to-yellow-600',
-    },
-    {
-      id: 10,
-      title: 'Accounting System',
-      slug: 'accounting-system',
-      description: 'Financial accounting with ledgers, vouchers, GST/VAT, bank reconciliation, and reports.',
-      image: '📚',
-      category: 'Finance',
-      technologies: ['Next.js', 'NestJS', 'PostgreSQL'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-sky-500 to-indigo-600',
-    },
-    {
-      id: 11,
-      title: 'HRMS',
-      slug: 'hrms',
-      description: 'Human Resource Management: recruitment, onboarding, attendance, payroll, and performance.',
-      image: '👥',
-      category: 'HR',
-      technologies: ['React', 'Node.js', 'PostgreSQL'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-fuchsia-500 to-pink-600',
-    },
-    {
-      id: 12,
-      title: 'School Management System',
-      slug: 'school-management-system',
-      description: 'End-to-end school operations: admissions, timetable, exams, fees, LMS, and parent app.',
-      image: '🏫',
-      category: 'EdTech',
-      technologies: ['Next.js', 'Node.js', 'PostgreSQL'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-red-500 to-rose-600',
-    },
-    {
-      id: 13,
-      title: 'Student Training Management System',
-      slug: 'student-training-management-system',
-      description: 'Training programs, batches, trainers, attendance, certifications, and placement tracking.',
-      image: '🧪',
-      category: 'EdTech',
-      technologies: ['React', 'Express', 'MongoDB'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-indigo-500 to-purple-600',
-    },
-    {
-      id: 14,
-      title: 'Fleet Management System',
-      slug: 'fleet-management-system',
-      description: 'Vehicle tracking, trip planning, fuel logs, maintenance schedules, and driver scorecards.',
-      image: '🚚',
-      category: 'Logistics',
-      technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Maps API'],
-      date: '2023',
-      github: '#',
-      demo: '#',
-      color: 'from-slate-500 to-gray-600',
-    },
-  ]
+  const allProjects = getAllProjects()
+  const projects = allProjects.map((project, index) => ({
+    id: index + 1,
+    ...project,
+    github: project.links.github,
+    demo: project.links.demo,
+    // Keep emoji as fallback if no image
+    emoji: project.image ? null : getEmojiForProject(project.slug),
+  }))
+
+  function getEmojiForProject(slug: string): string {
+    const emojiMap: { [key: string]: string } = {
+      'erp-manufacturing-system': '🏭',
+      'doc-spot-doctor-appointment-system': '🩺',
+      'food-delivery-application': '🍔',
+      'student-portal': '🎓',
+      'real-estate-management-system': '🏘️',
+      'real-estate-rental-management': '🏠',
+      'farmer-procurement-application': '🌾',
+      'inventory-and-warehousing-system': '📦',
+      'accounting-system': '📚',
+      'hrms': '👥',
+      'school-management-system': '🏫',
+      'fleet-management-system': '🚚',
+    }
+    return emojiMap[slug] || '📱'
+  }
+
+  function getColorForProject(slug: string): string {
+    const colorMap: { [key: string]: string } = {
+      'erp-manufacturing-system': 'from-emerald-500 to-green-600',
+      'doc-spot-doctor-appointment-system': 'from-cyan-500 to-blue-600',
+      'food-delivery-application': 'from-orange-500 to-red-600',
+      'student-portal': 'from-blue-400 to-cyan-500',
+      'real-estate-management-system': 'from-pink-500 to-rose-600',
+      'real-estate-rental-management': 'from-purple-500 to-violet-600',
+      'farmer-procurement-application': 'from-lime-500 to-green-600',
+      'inventory-and-warehousing-system': 'from-amber-500 to-yellow-600',
+      'accounting-system': 'from-sky-500 to-indigo-600',
+      'hrms': 'from-fuchsia-500 to-pink-600',
+      'school-management-system': 'from-red-500 to-rose-600',
+      'fleet-management-system': 'from-slate-500 to-gray-600',
+    }
+    return colorMap[slug] || 'from-cyan-500 to-blue-600'
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -260,8 +123,20 @@ const ProjectsGrid = () => {
                   >
                     <div className="space-y-4">
                       {/* Project Icon/Image */}
-                      <div className={`text-5xl sm:text-6xl p-5 sm:p-6 rounded-xl bg-gradient-to-r ${project.color} shadow-lg flex items-center justify-center`}>
-                        {project.image}
+                      <div className={`p-5 sm:p-6 rounded-xl bg-gradient-to-r ${getColorForProject(project.slug)} shadow-lg flex items-center justify-center overflow-hidden`}>
+                        {project.image ? (
+                          <div className="relative w-full h-32 sm:h-40">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-contain"
+                              unoptimized
+                            />
+                          </div>
+                        ) : (
+                          <span className="text-5xl sm:text-6xl">{project.emoji}</span>
+                        )}
                       </div>
 
                       {/* Category & Date */}

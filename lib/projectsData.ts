@@ -6,6 +6,7 @@ export type Project = {
   date: string
   technologies: string[]
   links: { demo: string; github: string }
+  image?: string
 }
 
 export const projects: Project[] = [
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     date: '2025',
     technologies: ['Next.js', 'TypeScript', 'Node.js', 'Prisma', 'PostgreSQL'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/erp.png',
   },
   {
     slug: 'doc-spot-doctor-appointment-system',
@@ -28,6 +30,7 @@ export const projects: Project[] = [
     date: '2025',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Twilio'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/DocSpot.png',
   },
   {
     slug: 'food-delivery-application',
@@ -38,6 +41,7 @@ export const projects: Project[] = [
     date: '2024',
     technologies: ['React Native', 'Node.js', 'MongoDB', 'Maps API'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/FoodDeliveryApp.png',
   },
   {
     slug: 'student-portal',
@@ -48,6 +52,7 @@ export const projects: Project[] = [
     date: '2024',
     technologies: ['Next.js', 'NestJS', 'PostgreSQL', 'Redis'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/studentPortal.png',
   },
   {
     slug: 'real-estate-management-system',
@@ -58,6 +63,7 @@ export const projects: Project[] = [
     date: '2024',
     technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Mapbox'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/realestate.jpeg',
   },
   {
     slug: 'real-estate-rental-management',
@@ -78,16 +84,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
     links: { demo: '#', github: '#' },
-  },
-  {
-    slug: 'outlet-management-system',
-    title: 'Outlet Management System',
-    description:
-      'Retail outlet operations: store onboarding, planograms, stock audits, promotions, and reporting.',
-    category: 'Retail',
-    date: '2023',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Redis'],
-    links: { demo: '#', github: '#' },
+    image: '/images/projects/FarmerProcurement.png',
   },
   {
     slug: 'inventory-and-warehousing-system',
@@ -98,6 +95,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'RabbitMQ'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/wms.jpeg',
   },
   {
     slug: 'accounting-system',
@@ -108,6 +106,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['Next.js', 'NestJS', 'PostgreSQL'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/accounting app.jpeg',
   },
   {
     slug: 'hrms',
@@ -118,6 +117,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['React', 'Node.js', 'PostgreSQL'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/hrms.jpeg',
   },
   {
     slug: 'school-management-system',
@@ -128,16 +128,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['Next.js', 'Node.js', 'PostgreSQL'],
     links: { demo: '#', github: '#' },
-  },
-  {
-    slug: 'student-training-management-system',
-    title: 'Student Training Management System',
-    description:
-      'Training programs, batches, trainers, attendance, certifications, and placement tracking.',
-    category: 'EdTech',
-    date: '2023',
-    technologies: ['React', 'Express', 'MongoDB'],
-    links: { demo: '#', github: '#' },
+    image: '/images/projects/school_management_app.jpeg',
   },
   {
     slug: 'fleet-management-system',
@@ -148,6 +139,7 @@ export const projects: Project[] = [
     date: '2023',
     technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Maps API'],
     links: { demo: '#', github: '#' },
+    image: '/images/projects/fleetmanagement.png',
   },
 ]
 

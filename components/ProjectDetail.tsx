@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { getProjectBySlug } from '@/lib/projectsData'
 
 type ProjectDetailProps = {
@@ -45,8 +46,20 @@ export default function ProjectDetail({ slug }: ProjectDetailProps) {
         {/* Meta and Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            {/* Media Placeholder */}
-            <div className="w-full aspect-video rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl" />
+            {/* Project Image */}
+            {project.image ? (
+              <div className="w-full aspect-video rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl overflow-hidden relative">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+            ) : (
+              <div className="w-full aspect-video rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl" />
+            )}
 
             {/* Content */}
             <div className="p-5 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl space-y-4">
